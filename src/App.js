@@ -3,6 +3,7 @@ import InnForm from './components/InnForm/InnForm';
 import axios from 'axios';
 
 import './App.sass';
+import Loader from './components/Loader/Loader';
 
 function App() {
     const [isLoading, setIsLoading] = React.useState(false);
@@ -22,7 +23,7 @@ function App() {
         <div className="app">
             <div className="container">
                 <InnForm sendRequest={sendRequest} />
-                {isLoading && <p>Получаем данные</p>}
+                {isLoading && <Loader />}
             </div>
         </div>
     );
