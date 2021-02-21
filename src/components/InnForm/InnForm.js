@@ -19,16 +19,22 @@ const InnForm = ({ sendRequest }) => {
     };
 
     return (
-        <form className="inn-form" onSubmit={handleSubmitForm}>
-            <textarea
-                className="inn-list"
-                name="inn_list"
-                placeholder="Введите ИНН"
-                value={innList}
-                onChange={(e) => setInnList(e.target.value)}></textarea>
-            {!isValid && <p className="error">Заполните поле</p>}
-            <button type="submit" className="btn">
-                Отправить
+        <form className="i-form" onSubmit={handleSubmitForm}>
+            <div className="i-form__wrap">
+                <label htmlFor="inn_list" className="i-form__label">
+                    Введите список ИНН
+                </label>
+                <textarea
+                    className="i-form__textarea"
+                    name="inn_list"
+                    placeholder="Введите ИНН"
+                    value={innList}
+                    onChange={(e) => setInnList(e.target.value)}></textarea>
+                {!isValid && <span className="i-form__error">Заполните поле</span>}
+            </div>
+
+            <button type="submit" className="btn i-form__submit">
+                Поиск
             </button>
         </form>
     );

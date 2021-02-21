@@ -1,7 +1,9 @@
+@import './_variables.sass'
+    
 html
     box-sizing: border-box
     min-height: 100%
-    font-family: 'Roboto', sans-serif
+    font-family: $fontmain
 
 *, *:before, *:after
     margin: 0
@@ -15,3 +17,16 @@ html
     max-width: 1200px
     margin: 0 auto
     padding: 0 15px
+
+.btn 
+    display: inline-block 
+    padding: 10px 20px 
+    background: $colorMain
+    color: #fff 
+    font-size: 16px
+    border: none
+    cursor: pointer
+    transition: 0.3s ease
+    border-radius: 5px
+    &:hover 
+        background: darken($colorMain, 10%)
