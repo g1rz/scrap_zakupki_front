@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import InnForm from './components/InnForm/InnForm';
+import axios from 'axios';
+
+import './App.sass';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [isLoading, setIsLoading] = React.useState(false);
+
+    const sendRequest = async (innList) => {
+        setIsLoading(true);
+        try {
+            const response = await axios.post('http://localhost:3002', { innList: innList });
+            setIsLoading(false);
+            console.log('Returned data:', response.data);
+        } catch (e) {
+            console.log(`😱 Axios request failed: ${e}`);
+        }
+    };
+
+    return (
+        <div className="app">
+            <div className="container">
+                <InnForm sendRequest={sendRequest} />
+                {isLoading && <p>Получаем данные</p>}
+            </div>
+        </div>
+    );
 }
 
 export default App;
