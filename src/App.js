@@ -1,9 +1,13 @@
 import React from 'react';
-import InnForm from './components/InnForm/InnForm';
 import axios from 'axios';
 
 import './App.sass';
+
+import InnForm from './components/InnForm/InnForm';
 import Loader from './components/Loader/Loader';
+
+import dataTest from './data-test.json';
+import ResultItem from './components/ResultItem/ResultItem';
 
 function App() {
     const [isLoading, setIsLoading] = React.useState(false);
@@ -19,11 +23,16 @@ function App() {
         }
     };
 
+    console.log(dataTest);
+
+    const resultList = dataTest.map((item) => <ResultItem key={item.inn} item={item} />);
+
     return (
         <div className="app">
             <div className="container">
                 <InnForm sendRequest={sendRequest} />
                 {isLoading && <Loader />}
+                <div className="result-list">{resultList}</div>
             </div>
         </div>
     );
