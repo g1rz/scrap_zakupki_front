@@ -23,10 +23,12 @@
     border-collapse: collapse
 
     th
+        
         padding: 10px
         vertical-align: middle
         border: 1px solid $colorBorder
-        text-align: center
+        text-align: left
+        font-size: 14px
     td
         padding: 10px
         vertical-align: top
@@ -43,3 +45,21 @@
 .order-desc
     max-height: 100px
     overflow-y: hidden
+
+.order-sort 
+    position: relative
+    padding-right: 30px
+    cursor: pointer
+    &::after 
+        content: ''
+        position: absolute
+        top: 50%
+        right: 5px
+        width: 10px
+        height: 10px
+        border-right: 1px solid #000
+        border-bottom: 1px solid #000
+        transform: translateY(-50%) rotate(45deg)
+        transition: 0.3s ease
+    &.desc::after 
+        transform: translateY(-50%) rotate(225deg)
