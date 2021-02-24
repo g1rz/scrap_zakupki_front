@@ -1,18 +1,45 @@
 @import '../../_variables.sass'
 
 .result-item
-    border: 1px solid $colorBorder
-    border-radius: 3px
-    &__header 
-        display: flex 
+
+    &__header
+        display: flex
+        margin-bottom: 10px
         align-items: stretch
         text-align: center
-        
+        border: 1px solid $colorBorder
+        border-radius: 3px
+
     &__col
         padding: 10px 20px
-        
-        &--left 
-            width: 200px 
+
+        &--left
+            width: 200px
             border-right: 1px solid $colorBorder
         &--right
             width: calc(100% - 200px)
+
+.orders
+    border-collapse: collapse
+
+    th
+        padding: 10px
+        vertical-align: middle
+        border: 1px solid $colorBorder
+        text-align: center
+    td
+        padding: 10px
+        vertical-align: top
+        border: 1px solid $colorBorder
+        text-align: center
+        &:nth-child(1)
+            width: 14%
+        &:nth-child(2)
+            width: 40%
+            text-align: left
+        &:nth-child(3), &:nth-child(4), &:nth-child(5)
+            width: 10%
+
+.order-desc
+    max-height: 100px
+    overflow-y: hidden
