@@ -55,18 +55,34 @@ const ResultItem = ({ item }) => {
         let copyOrders = JSON.parse(JSON.stringify(orders));
 
         if (sort === 'asc') {
-            copyOrders.sort((a, b) => {
-                console.log(a[field].replace(/\s/g, ''));
-                if (a[field].replace(/\s/g, '') > b[field].replace(/\s/g, '')) return -1;
-                if (a[field].replace(/\s/g, '') < b[field].replace(/\s/g, '')) return 1;
-                return 0;
-            });
+            if (field === 'price') {
+                copyOrders.sort((a, b) => {
+                    if (+a[field].replace(/\D||\s/g, '') > +b[field].replace(/\D||\s/g, '')) return -1;
+                    if (+a[field].replace(/\D||\s/g, '') < +b[field].replace(/\D||\s/g, '')) return 1;
+                    return 0;
+                });
+            } else {
+                copyOrders.sort((a, b) => {
+                    if (a[field].replace(/\s/g, '') > b[field].replace(/\s/g, '')) return -1;
+                    if (a[field].replace(/\s/g, '') < b[field].replace(/\s/g, '')) return 1;
+                    return 0;
+                });
+            }
+            
         } else {
-            copyOrders.sort((a, b) => {
-                if (a[field].replace(/\s/g, '') < b[field].replace(/\s/g, '')) return -1;
-                if (a[field].replace(/\s/g, '') > b[field].replace(/\s/g, '')) return 1;
-                return 0;
-            });
+            if (field === 'price') {
+                copyOrders.sort((a, b) => {
+                    if (+a[field].replace(/\D||\s/g, '') < +b[field].replace(/\D||\s/g, '')) return -1;
+                    if (+a[field].replace(/\D||\s/g, '') > +b[field].replace(/\D||\s/g, '')) return 1;
+                    return 0;
+                });
+            } else {
+                copyOrders.sort((a, b) => {
+                    if (a[field].replace(/\s/g, '') < b[field].replace(/\s/g, '')) return -1;
+                    if (a[field].replace(/\s/g, '') > b[field].replace(/\s/g, '')) return 1;
+                    return 0;
+                });
+            }
         }
 
         setOrders(copyOrders);
